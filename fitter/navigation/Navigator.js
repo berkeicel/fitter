@@ -20,8 +20,8 @@ const WorkoutNavigator = createStackNavigator({
 })
 
 const AppNavigator = createMaterialTopTabNavigator({
+    Workout: WorkoutNavigator,
     Tips: HealthTipsScreen,
-    Workout: WorkoutNavigator
 })
 
 const MainNavigator = createSwitchNavigator({
