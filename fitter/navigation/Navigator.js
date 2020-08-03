@@ -3,6 +3,7 @@ import { createAppContainer, createSwitchNavigator} from 'react-navigation'
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import React from 'react'
 import {Text, Image, View} from 'react-native'
+import { scale, moderateScale, verticalScale} from '../scale';
 
 //import screen files from the screens folder
 import AuthScreen from "../screens/AuthScreen"
@@ -17,11 +18,28 @@ const WorkoutNavigator = createStackNavigator({
     WorkoutsDisplay: WorkoutsDisplayScreen,
     Workout: WorkoutScreen,
     Settings: SettingsScreen
+}, {
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: '#030018'
+        },
+        headerTitleStyle: {
+            fontSize: moderateScale(18),
+            color: '#ff934c'
+        },
+    }
 })
 
 const AppNavigator = createMaterialTopTabNavigator({
     Workout: WorkoutNavigator,
     Tips: HealthTipsScreen,
+},{
+    tabBarPosition: 'bottom',
+    tabBarOptions: {
+        style: {
+            backgroundColor: "#030018"
+        }
+    }
 })
 
 const MainNavigator = createSwitchNavigator({

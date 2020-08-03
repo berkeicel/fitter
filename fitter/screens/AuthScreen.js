@@ -8,7 +8,6 @@ import scale, { moderateScale } from '../scale'
 import Input from '../components/Input'
 import StyledImport from '../components/StyledInput'
 import StyledInput from '../components/StyledInput'
-import { withOrientation } from 'react-navigation'
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
 
