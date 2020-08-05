@@ -30,18 +30,21 @@ const WorkoutCategoryScreen = props => {
         )
     }
     return(
-        <View>
+        <View style={{alignItems: 'center'}}>
             <FlatList
                 style={{height: '100%', flexGrow: 1}}
-                contentContainerStyle={{height: "100%"}}
                 data={Object.keys(workouts)}
+                numColumns={2}
                 keyExtractor={item => workouts.toString()}
 				renderItem={({ item }) => (
-                    <View style={{height: '100%', width: '100%', alignItems: 'center'}}>
-                        <View  style={{height: "45%", width: '45%'}}>
-                            <CategoryButton navigate={() => {props.navigation.navigate("WorkoutsDisplay")}} title={item} imageUri={"https://www.bodybuilding.com/images/2018/june/how-to-build-bicep-peaks-of-perfection-tall.jpg"}/>
-                        </View>
-                    </View>
+                    <CategoryButton navigate={() => {
+                        props.navigation.navigate("WorkoutsDisplay", {
+                            title: item,
+                            workouts: workouts[item]
+                        })
+                        }} 
+                        title={item} 
+                        imageUri={workouts[item]["ImageBG"]}/>
 				)}
 			/>
         </View>

@@ -1,16 +1,35 @@
-import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import React, {useState} from 'react'
+import {View, ScrollView} from 'react-native'
+import WorkoutButton from '../components/WorkoutButton'
+import { moderateScale } from '../scale'
 
 const WorkoutsDisplayScreen = props => {
-    return(
-        <View>
+    const [workouts, setWorkouts] = useState(props.navigation.getParam("workouts"))
 
-        </View>
+    return(
+            <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+            {Object.keys(workouts).map(workout => {
+                return(
+                    <WorkoutButton 
+                        title={workout} 
+                        difficulty={workouts[workout]["Difficulty"]} 
+                        imageUri={workouts[workout]["ImageBG"]}
+                        navigate={() => {
+                            props.navigation.navigate("Workout", {
+                                title: workout,
+                                workouts: workouts[workout]
+                            })}}
+                    />
+                )
+            })}
+            </ScrollView>
     )
 }
 
-const styles = StyleSheet.create({
-
-})
+WorkoutsDisplayScreen.navigationOptions = navData => {
+    return{
+        headerTitle: navData.navigation.getParam("title")
+    }
+}
 
 export default WorkoutsDisplayScreen
