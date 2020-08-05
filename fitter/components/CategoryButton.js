@@ -7,7 +7,9 @@ import {LinearGradient} from 'expo-linear-gradient'
 
 const CategoryButton = props => {
   return(
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => {
+        props.navigate()
+    }}>
         <View  style={styles.main}>
             <View style={{height: '75%', width: "100%"}}>
                 <Image style={styles.image} source={{uri: props.imageUri}}/>

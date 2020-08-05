@@ -39,7 +39,7 @@ const WorkoutCategoryScreen = props => {
 				renderItem={({ item }) => (
                     <View style={{height: '100%', width: '100%', alignItems: 'center'}}>
                         <View  style={{height: "45%", width: '45%'}}>
-                            <CategoryButton title={item} imageUri={"https://www.bodybuilding.com/images/2018/june/how-to-build-bicep-peaks-of-perfection-tall.jpg"}/>
+                            <CategoryButton navigate={() => {props.navigation.navigate("WorkoutsDisplay")}} title={item} imageUri={"https://www.bodybuilding.com/images/2018/june/how-to-build-bicep-peaks-of-perfection-tall.jpg"}/>
                         </View>
                     </View>
 				)}
