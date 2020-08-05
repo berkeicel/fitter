@@ -68,9 +68,9 @@ const styles = StyleSheet.create({
 		borderRadius: moderateScale(12),
 		justifyContent: 'center',
 		shadowColor: 'black',
-  	shadowOpacity: moderateScale(0.58),
-  	shadowOffset: { width: 0, height: 2},
-  	shadowRadius: moderateScale(16.00),
+  		shadowOpacity: moderateScale(0.58),
+  		shadowOffset: { width: 0, height: 2},
+  		shadowRadius: moderateScale(16.00),
 		elevation: 24,
 		marginBottom: moderateScale(30),
 		alignItems: 'center'
