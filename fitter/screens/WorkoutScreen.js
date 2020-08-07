@@ -21,7 +21,6 @@ const WorkoutScreen = props => {
         }
     }
 
-    console.log(workout)
     return(
         <View>
             <ScrollView contentContainerStyle={{alignItems: 'center'}}>

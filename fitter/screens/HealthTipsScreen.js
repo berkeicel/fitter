@@ -22,7 +22,7 @@ const HealthTipsScreen = props => {
 		return (
 			<LinearGradient style={styles.gradientTitle} colors={["#ff934c", "#fc686f"]} start={[0, 1]} end={[1, 0]}>
 				<Text style={styles.title}>Fitness Tips</Text>
-      </LinearGradient>
+      		</LinearGradient>
 		)
 	}
   return(

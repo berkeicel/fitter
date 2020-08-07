@@ -11,6 +11,7 @@ import StyledInput from '../components/StyledInput'
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
 
+//Saves data to the user device cache
 const saveDataToStorage = (token, userId, expirationDate) => {
     AsyncStorage.setItem(
         'userData', 
@@ -167,6 +168,8 @@ const AuthScreen = props => {
 						iconName="key"
 						inputField={{marginBottom: moderateScale(30)}}
 					/>
+					<Text style={{fontSize: moderateScale(15), color: 'lightblue'}}>Presented By</Text>
+					<Text style={{fontSize: moderateScale(25), color: 'lightblue', fontWeight: 'bold'}}>Berke Icel</Text>
 				</Card>
 				<View style={{flexDirection: 'row', paddingTop: moderateScale(20), width: '100%', justifyContent: 'space-evenly'}}>
 					<TouchableOpacity style={styles.button} onPress={() => {
@@ -211,7 +214,7 @@ const styles = StyleSheet.create({
 	card: {
 		width: '90%',
 		borderRadius: moderateScale(10),
-		paddingVertical: moderateScale(35),
+		paddingVertical: moderateScale(25),
 	},
 	logo: {
 		resizeMode: 'contain',
