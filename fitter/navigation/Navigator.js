@@ -15,6 +15,7 @@ import SettingsScreen from '../screens/SettingsScreen'
 import WorkoutCategoryScreen from "../screens/WorkoutCategoryScreen"
 import WorkoutScreen from '../screens/WorkoutScreen'
 import WorkoutsDisplayScreen from '../screens/WorkoutsDisplayScreen'
+import StartUpScreen from '../screens/StartUpScreen'
 
 const WorkoutNavigator = createStackNavigator({
     Categories: WorkoutCategoryScreen,
@@ -25,13 +26,14 @@ const WorkoutNavigator = createStackNavigator({
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: '#030018',
-            height: moderateScale(70)
+            height: moderateScale(70),
         },
         headerTitleStyle: {
             fontSize: moderateScale(24),
             color: 'white',
-            alignSelf: 'center'
+            paddingLeft: moderateScale(10)
         },
+        headerTitleAlign: 'left',
         headerBackground: () => (
             <LinearGradient
               colors={["#ff934c", "#fc686f"]}
@@ -52,8 +54,8 @@ const AppNavigator = createMaterialTopTabNavigator({
         screen: WorkoutNavigator,
         navigationOptions: {
             tabBarIcon: () => (
-                <View>
-                    <Ionicons name="ios-fitness" size={27} color="#fc686f"/>
+                <View style={{alignItems: 'center'}}>
+                    <Ionicons name="ios-fitness" size={moderateScale(35)} color="#fc686f"/>
                 </View>
             )
         }
@@ -62,8 +64,8 @@ const AppNavigator = createMaterialTopTabNavigator({
         screen: HealthTipsScreen,
         navigationOptions: {
             tabBarIcon: () => (
-                <View>
-                    <Ionicons name="ios-alert" size={28} color="#fc686f"/>
+                <View style={{alignItems: 'center'}}>
+                    <Ionicons name="ios-alert" size={moderateScale(35)} color="#fc686f"/>
                 </View>
             )
         }
@@ -73,17 +75,24 @@ const AppNavigator = createMaterialTopTabNavigator({
     tabBarOptions: {
         style: {
             backgroundColor: "white",
+            height: moderateScale(55)
         },
         showIcon: true,
         showLabel: false,
         indicatorStyle: {
             top: 0,
-            backgroundColor: "#fc686f"
+            backgroundColor: "#fc686f",
+            height: moderateScale(1)
+        },
+        iconStyle: {
+            height: moderateScale(100),
+            width: moderateScale(150)
         }
     },
 })
 
-const MainNavigator = createSwitchNavigator({
+const MainNavigator = createSwitchNavigator({    
+    Startup: StartUpScreen,
     Auth: AuthScreen,
     App: AppNavigator
 })

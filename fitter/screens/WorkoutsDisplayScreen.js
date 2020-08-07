@@ -6,18 +6,21 @@ import { moderateScale } from '../scale'
 const WorkoutsDisplayScreen = props => {
     const [workouts, setWorkouts] = useState(props.navigation.getParam("workouts"))
 
+    delete workouts["ImageBG"]
+
     return(
-            <ScrollView contentContainerStyle={{alignItems: 'center'}}>
+            <ScrollView contentContainerStyle={{alignItems: 'center', paddingVertical: moderateScale(10)}}>
             {Object.keys(workouts).map(workout => {
                 return(
                     <WorkoutButton 
-                        title={workout} 
+                        title={workout}
+                        key={workout} 
                         difficulty={workouts[workout]["Difficulty"]} 
                         imageUri={workouts[workout]["ImageBG"]}
                         navigate={() => {
                             props.navigation.navigate("Workout", {
                                 title: workout,
-                                workouts: workouts[workout]
+                                workout: workouts[workout]
                             })}}
                     />
                 )
@@ -28,7 +31,7 @@ const WorkoutsDisplayScreen = props => {
 
 WorkoutsDisplayScreen.navigationOptions = navData => {
     return{
-        headerTitle: navData.navigation.getParam("title")
+        headerTitle: navData.navigation.getParam("title"),
     }
 }
 

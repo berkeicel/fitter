@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         width: moderateScale(175),
         height: moderateScale(270),
         marginVertical: moderateScale(10),
-        marginHorizontal: moderateScale(5)
+        marginHorizontal: moderateScale(5),
     },
     image: {
         width: "100%",

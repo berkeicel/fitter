@@ -3,7 +3,8 @@ import {View, StyleSheet, Text, FlatList, ActivityIndicator} from 'react-native'
 
 import { scale, moderateScale, verticalScale} from '../scale';
 import CategoryButton from '../components/CategoryButton'
-
+import HeaderButton from '../components/HeaderButton'
+import {HeaderButtons, Item} from 'react-navigation-header-buttons'
 
 
 const WorkoutCategoryScreen = props => {
@@ -13,13 +14,12 @@ const WorkoutCategoryScreen = props => {
     getWorkouts = async () => {
 		const response = await fetch('https://fitter-5d923.firebaseio.com/workouts.json')
         const json = await response.json()
-        console.log(json)
         setWorkouts(json)
         setHasLoaded(true)
     }
     
     useEffect(() => {
-		getWorkouts()
+        getWorkouts()
     }, [])
     
     if(!hasLoaded){
@@ -32,10 +32,11 @@ const WorkoutCategoryScreen = props => {
     return(
         <View style={{alignItems: 'center'}}>
             <FlatList
-                style={{height: '100%', flexGrow: 1}}
+                style={{height: '100%',width: '100%', flexGrow: 1}}
+                contentContainerStyle={{alignItems: 'center'}}
                 data={Object.keys(workouts)}
                 numColumns={2}
-                keyExtractor={item => workouts.toString()}
+                keyExtractor={item => item}
 				renderItem={({ item }) => (
                     <CategoryButton navigate={() => {
                         props.navigation.navigate("WorkoutsDisplay", {
@@ -54,5 +55,20 @@ const WorkoutCategoryScreen = props => {
 const styles = StyleSheet.create({
 
 })
+
+WorkoutCategoryScreen.navigationOptions = navData => {
+    return {
+        headerRight: () => (
+			<HeaderButtons HeaderButtonComponent={HeaderButton}>
+				<Item 
+					title='Settings' 
+					iconName={"ios-cog"}
+					onPress={() => {
+						navData.navigation.navigate("Settings")
+					}}
+				/>
+			</HeaderButtons>)
+    }
+}
 
 export default WorkoutCategoryScreen
